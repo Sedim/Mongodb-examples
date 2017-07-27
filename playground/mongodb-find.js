@@ -12,16 +12,16 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
   //Now we can use '.then((docs) => ...' which is used in promises.
   //db.collection('Todos').find().toArray().then( // <== find all
 
-  db.collection('Users').find({name: 'Sedim'}).toArray().then(
-    (docs) => {
-    console.log('Users: Sedim');
-    console.log(JSON.stringify(docs, undefined, 2));
-  }, (err) => {
-      console.log('Unable to fetch todos', err);
-  });
+  // db.collection('Users').find({name: 'Sedim'}).toArray().then(
+  //   (docs) => {
+  //   console.log('deleted');
+  //   console.log(JSON.stringify(docs, undefined, 2));
+  // }, (err) => {
+  //     console.log('Unable to fetch todos', err);
+  // });
 
   // db.collection('Todos').find({
-  //   _id: new ObjectId('5976adf1127b89ccfdc98803')})
+  //   _id: new ObjectId('59776048d472d3f2d99f7990')})
   //   .toArray().then(
   //   (docs) => {
   //   console.log('Todos');
@@ -29,6 +29,22 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
   // }, (err) => {
   //     console.log('Unable to fetch todos', err);
   // });
+
+  db.collection('Todos').find({
+    _id: new ObjectId('59776048d472d3f2d99f7990')}).toArray( function(err,res){
+      console.log(res);
+    });
+
+    db.collection('Todos').find({_id: new ObjectId('5978ebda432694f83921a533')}).toArray().then (
+      (result) => {
+        console.log(result);
+      }, (err) => {
+          console.log('Unable to fetch todos', err);
+      });
+
+
+
+
 
 
 // count the number of documents
