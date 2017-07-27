@@ -33,24 +33,31 @@ db.collection('Todos').findOneAndDelete({completed: false}).then (
   });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  var myname = 'Sedim';
+  var nameObj = {
+    name: myname
+  };
+  // myString = JSON.stringify(nameObj, undefined, 2);
+  // console.log('nameObj Stringified =',myString);
+  // console.log('nameObj = ',nameObj);
+  // var newObj = JSON.parse(myString);
+  // console.log ('newOBJ= ', newObj);
+  // console.log('NewObj Stringified= ', JSON.stringify(newObj, undefined, 2));
+//findOneAndDelete**************
+  var collection = db.collection('Users');
+  collection.findOne(nameObj).then(
+    (result) => {
+    console.log(JSON.stringify(result, undefined, 2));
+    console.log(result._id);
+    collection.findOneAndDelete({_id:  ObjectId(result._id)}).then (
+      (result) => {
+        console.log(result);
+      }, (err) => {
+          console.log('Unable to fetch todos', err);
+      });
+  }, (err) => {
+      console.log('Unable to fetch todos', err);
+  });
 
 
 
