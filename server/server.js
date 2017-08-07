@@ -11,6 +11,9 @@ var {User} = require('./models/user');
 
 var app = express(); // Instatiate express  Object
 
+//geth the PORT from the env at prompt or use 3000
+const port = process.env.PORT || 3000; //This is for Heroku integration
+
 app.use(bodyParser.json()); // Middleware to handle the requests in JSON
 
 //**** Start http: Post Handling
@@ -87,6 +90,6 @@ app.get('/todos/:id', (req, res) =>{
 
 
 
-app.listen(3000, ()=> {
-  console.log('Started on port 3000');
+app.listen(port, ()=> {
+  console.log(`Started on port ${port}`);
 });

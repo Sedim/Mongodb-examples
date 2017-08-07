@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise; // Attach internal Promises to mongoose
-mongoose.connect('mongodb://localhost:27017/Todoapp',
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Todoapp',
   {useMongoClient: true});
 
 //Export it
