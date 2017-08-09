@@ -21,13 +21,13 @@ app.use(bodyParser.json()); // Middleware to handle the requests in JSON
 // only (Using the parser above into an instance of a todo object ()
 app.post('/todos', (req,res) =>{
   console.log('Client req.body.text= ',req.body.text); //This is the request parsed by bodyParser
-  console.log('Client req.body.completedAt= ',req.body.completedAt); //This is the request parsed by bodyParser
+//  console.log('Client req.body.completedAt= ',req.body.completedAt); //This is the request parsed by bodyParser
 //  console.log('Client req.body= ',req.body); //This is the request parsed by bodyParser
 //  console.log('Client req= ',req); //This is the request parsed by bodyParser
 // Insantiate a new object
   var newTodoDocument = new Todo({
     text: req.body.text,
-    completedAt: req.body.completedAt
+//    completedAt: req.body.completedAt
   });
   newTodoDocument.save().then ((doc) => {// save the new object to our Todo collection
     res.send(doc); // Respond to client with new document
@@ -45,7 +45,9 @@ app.get('/todos', (req, res) => {
 //  res.send ({
 //tododocs: tododocs,
 //somecode: 'somedesiredcode'});
+    console.log('We are here', tododocs);
     res.send ({tododocs}); // ES6 : because its the same as above
+
   }, (e) => {
     res.status(400).send(e);
   });
